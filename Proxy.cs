@@ -21,6 +21,12 @@ namespace IVAS2.DbSetup
                     , new AnswerType { AnswerTypeName = "BKR" }
                 );
 
+                db.ApplicationSetting.AddRange(
+                    new ApplicationSetting { ApplicationSettingName = "MaxRowNumber", ApplicationSettingValue = "100", IsValueNumeric = true }
+                    , new ApplicationSetting { ApplicationSettingName = "LogFileLocation", ApplicationSettingValue = @"C:\Users\Public\logs\", IsValueNumeric = false }
+
+                );
+
                 db.Language.AddRange(
                      new Language { English = "Couldn't find username '", Dutch = "De gebruiker '" }
                     , new Language { English = "' and/or terminal name '", Dutch = "' en/of de terminal naam kon niet gevonden worden '" }

@@ -15,6 +15,7 @@ namespace IVAS2.DbSetup
         {
             public DbSet<Answer> Answer { get; set; }
             public DbSet<AnswerType> AnswerType { get; set; }
+            public DbSet<ApplicationSetting> ApplicationSetting { get; set; }
             public DbSet<Color> Color { get; set; }
             public DbSet<CommentType> CommentType { get; set; }
             public DbSet<Examiner> Examiner { get; set; }
@@ -31,6 +32,7 @@ namespace IVAS2.DbSetup
                 var sqlOption =
                 optionsBuilder.UseSqlServer(@"Server=ASL00323V\SQLEXPRESS;Database=IVAS2_Db_Test;Trusted_Connection=True;Integrated Security=true;", null);
 
+                // Create with a userID
                 //optionsBuilder.UseSqlServer(@"Server=ASL00323V\SQLEXPRESS;Database=IVAS2_Db_Dev;User Instance=true;User Id=login_any_db;Password=Zaq12wsx;",
                 //    sqlServerOptionsAction: sqlOptions =>
                 //    {
@@ -63,6 +65,15 @@ namespace IVAS2.DbSetup
             public string AnswerTypeName { get; set; }
 
             public ICollection<Answer> Answers { get; set; }
+        }
+
+        public class ApplicationSetting
+        {
+            public int ApplicationSettingID { get; set; }
+            public string ApplicationSettingName { get; set; }
+            public string ApplicationSettingValue { get; set; }
+            public bool IsValueNumeric { get; set; }
+
         }
 
         public class Color

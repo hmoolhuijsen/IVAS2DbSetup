@@ -22,6 +22,21 @@ namespace IVAS2.DbSetup.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ApplicationSetting",
+                columns: table => new
+                {
+                    ApplicationSettingID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ApplicationSettingName = table.Column<string>(nullable: true),
+                    ApplicationSettingValue = table.Column<string>(nullable: true),
+                    IsValueNumeric = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApplicationSetting", x => x.ApplicationSettingID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Color",
                 columns: table => new
                 {
@@ -90,6 +105,20 @@ namespace IVAS2.DbSetup.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IVAS2_User",
+                columns: table => new
+                {
+                    UserID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserName = table.Column<string>(nullable: true),
+                    UserLevel = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IVAS2_User", x => x.UserID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Language",
                 columns: table => new
                 {
@@ -114,20 +143,6 @@ namespace IVAS2.DbSetup.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Terminal", x => x.TerminalID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "IVAS2_User",
-                columns: table => new
-                {
-                    UserID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserName = table.Column<string>(nullable: true),
-                    UserLevel = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.UserID);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,7 +185,7 @@ namespace IVAS2.DbSetup.Migrations
                         principalColumn: "TerminalID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Scan_User_UserID",
+                        name: "FK_Scan_IVAS2_User_UserID",
                         column: x => x.UserID,
                         principalTable: "IVAS2_User",
                         principalColumn: "UserID",
@@ -272,6 +287,9 @@ namespace IVAS2.DbSetup.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Answer");
+
+            migrationBuilder.DropTable(
+                name: "ApplicationSetting");
 
             migrationBuilder.DropTable(
                 name: "ExceptionCase");

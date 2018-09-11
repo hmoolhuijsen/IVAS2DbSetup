@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IVAS2.DbSetup.Migrations
 {
     [DbContext(typeof(Model.IVAS2Context))]
-    [Migration("20180904085622_InitialCreate")]
+    [Migration("20180911113505_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,6 +67,23 @@ namespace IVAS2.DbSetup.Migrations
                     b.HasKey("AnswerTypeID");
 
                     b.ToTable("AnswerType");
+                });
+
+            modelBuilder.Entity("IVAS2.DbSetup.Model+ApplicationSetting", b =>
+                {
+                    b.Property<int>("ApplicationSettingID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicationSettingName");
+
+                    b.Property<string>("ApplicationSettingValue");
+
+                    b.Property<bool>("IsValueNumeric");
+
+                    b.HasKey("ApplicationSettingID");
+
+                    b.ToTable("ApplicationSetting");
                 });
 
             modelBuilder.Entity("IVAS2.DbSetup.Model+Color", b =>
@@ -138,6 +155,21 @@ namespace IVAS2.DbSetup.Migrations
                     b.HasKey("ImageID");
 
                     b.ToTable("Image");
+                });
+
+            modelBuilder.Entity("IVAS2.DbSetup.Model+IVAS2_User", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("UserLevel");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("IVAS2_User");
                 });
 
             modelBuilder.Entity("IVAS2.DbSetup.Model+Language", b =>
@@ -217,21 +249,6 @@ namespace IVAS2.DbSetup.Migrations
                     b.HasKey("TerminalID");
 
                     b.ToTable("Terminal");
-                });
-
-            modelBuilder.Entity("IVAS2.DbSetup.Model+IVAS2_User", b =>
-                {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("UserLevel");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("IVAS2_User");
                 });
 
             modelBuilder.Entity("IVAS2.DbSetup.Model+Answer", b =>
