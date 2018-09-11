@@ -217,7 +217,7 @@ namespace IVAS2.DbSetup.Migrations
                     b.ToTable("Terminal");
                 });
 
-            modelBuilder.Entity("IVAS2.DbSetup.Model+User", b =>
+            modelBuilder.Entity("IVAS2.DbSetup.Model+IVAS2_User", b =>
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
@@ -229,7 +229,7 @@ namespace IVAS2.DbSetup.Migrations
 
                     b.HasKey("UserID");
 
-                    b.ToTable("User");
+                    b.ToTable("IVAS2_User");
                 });
 
             modelBuilder.Entity("IVAS2.DbSetup.Model+Answer", b =>
@@ -270,7 +270,7 @@ namespace IVAS2.DbSetup.Migrations
                         .HasForeignKey("TerminalID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("IVAS2.DbSetup.Model+User", "User")
+                    b.HasOne("IVAS2.DbSetup.Model+IVAS2_User", "IVAS2_User")
                         .WithMany("Scans")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -125,13 +125,13 @@ namespace IVAS2.DbSetup
                 db.Examiner.AddRange(
                     new Examiner { ExaminerName = "AssureID" }
                     , new Examiner { ExaminerName = "BKR" }
-                    );
+                );
 
                 db.IVAS2_User.AddRange(
                     new IVAS2_User { UserName = "ISECAST\\USER1", UserLevel = "Unauthorised" }
                     , new IVAS2_User { UserName = "ISECAST\\Administrator", UserLevel = "Administrator" }
                     , new IVAS2_User { UserName = "ISECAST\\teamlead", UserLevel = "TeamLeader" }
-                    );
+                );
 
                 db.SaveChanges();
             }

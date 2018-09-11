@@ -117,7 +117,7 @@ namespace IVAS2.DbSetup.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "IVAS2_User",
                 columns: table => new
                 {
                     UserID = table.Column<int>(nullable: false)
@@ -172,7 +172,7 @@ namespace IVAS2.DbSetup.Migrations
                     table.ForeignKey(
                         name: "FK_Scan_User_UserID",
                         column: x => x.UserID,
-                        principalTable: "User",
+                        principalTable: "IVAS2_User",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -301,7 +301,7 @@ namespace IVAS2.DbSetup.Migrations
                 name: "Terminal");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "IVAS2_User");
         }
     }
 }

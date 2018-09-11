@@ -29,7 +29,7 @@ namespace IVAS2.DbSetup
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 var sqlOption =
-                optionsBuilder.UseSqlServer(@"Server=ASL00323V\SQLEXPRESS;Database=IVAS2_Db_Dev;Trusted_Connection=True;Integrated Security=true;", null);
+                optionsBuilder.UseSqlServer(@"Server=ASL00323V\SQLEXPRESS;Database=IVAS2_Db_Test;Trusted_Connection=True;Integrated Security=true;", null);
 
                 //optionsBuilder.UseSqlServer(@"Server=ASL00323V\SQLEXPRESS;Database=IVAS2_Db_Dev;User Instance=true;User Id=login_any_db;Password=Zaq12wsx;",
                 //    sqlServerOptionsAction: sqlOptions =>
@@ -115,7 +115,7 @@ namespace IVAS2.DbSetup
             public int TerminalID { get; set; }
             public Terminal Terminal { get; set; }
             public int UserID { get; set; }
-            public IVAS2_User User { get; set; }
+            public IVAS2_User IVAS2_User { get; set; }
             public string LastName { get; set; }
             public string FirstName { get; set; }
             public DateTime DateOfBirth { get; set; }
